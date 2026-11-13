@@ -320,6 +320,13 @@
 
       .links { padding-bottom: 4px; }
     }
+    
+@media (max-width: 760px) {
+  #conduccion .feature {
+    grid-template-columns: 1fr !important;
+  }
+}
+
   </style>
 </head>
 
@@ -378,27 +385,51 @@
           </p>
         </div>
 
-        <div class="feature" style="margin-bottom:14px;">
-          <p class="intro" style="margin:0 0 22px; max-width:900px;">
-            Conducir implica mucho más que estar frente a una cámara o un
-            micrófono: es escuchar, preguntar y repreguntar, guiar conversaciones,
-            administrar tiempos, articular intervenciones y sostener el hilo de
-            un programa. Trabajo a partir de una estructura o un guion, con
-            flexibilidad para adaptarme a lo que sucede en vivo, improvisar y
-            resolver situaciones sin perder de vista el objetivo del encuentro.
-          </p>
+       
+<div class="feature" style="
+  display:grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap:32px;
+  align-items:center;
+  margin-bottom:14px;
+">
+  <div>
+    <p class="intro" style="margin:0; max-width:650px;">
+      Conducir implica mucho más que estar frente a una cámara o un
+      micrófono: es escuchar, preguntar y repreguntar, guiar conversaciones,
+      administrar tiempos, articular intervenciones y sostener el hilo de
+      un programa. Trabajo a partir de una estructura o un guion, con
+      flexibilidad para adaptarme a lo que sucede en vivo, improvisar y
+      resolver situaciones sin perder de vista el objetivo del encuentro.
+    </p>
+  </div>
 
-<figure style="width:100%; max-width:300px; margin:24px 0; text-align:left;">
-  <img
-    src="4C3C40F1-5F4F-4D2E-B571-CE20B84FE468.jpg"
-    alt="Rhanela trabajando en la escritura de un guion"
-    loading="lazy"
-    style="display:block; width:100%; height:auto; border-radius:12px;"
-  >
-  <figcaption style="margin-top:8px; color:#b8adb4; font-size:13px;">
-    Desarrollo de ideas, escritura de guiones y preparación de contenidos.
-  </figcaption>
-</figure>
+  <div style="display:flex; flex-direction:column; gap:18px;">
+    <figure style="width:100%; margin:0; text-align:left;">
+      <img
+        src="IMG_9520.jpg"
+        alt="Rhanela participando como invitada en un programa de streaming"
+        loading="lazy"
+        style="display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px;"
+      >
+      <figcaption style="margin-top:7px; color:#b8adb4; font-size:13px;">
+        Participación como invitada en un espacio de streaming.
+      </figcaption>
+    </figure>
+
+    <figure style="width:100%; margin:0; text-align:left;">
+      <img
+        src="4C3C40F1-5F4F-4D2E-B571-CE20B84FE468.jpg"
+        alt="Rhanela trabajando en la escritura de un guion"
+        loading="lazy"
+        style="display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px;"
+      >
+      <figcaption style="margin-top:7px; color:#b8adb4; font-size:13px;">
+        Desarrollo de ideas, escritura de guiones y preparación de contenidos.
+      </figcaption>
+    </figure>
+  </div>
+</div>
 
           <div class="grid">
             <article class="tile">
