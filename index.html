@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,95 +7,335 @@
   <meta name="description" content="Portfolio de Rhanela: conducción, producción de contenidos, comunicación y música.">
   <meta name="theme-color" content="#171517">
   <title>Rhanela — Conducción, comunicación y música</title>
+
   <style>
     :root {
       --bg: #171517; --panel: #211e21; --text: #f5f0f2;
       --muted: #b8adb4; --accent: #f05aa6; --line: #393238;
       --max: 1120px;
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--bg); color: var(--text);
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
-      line-height: 1.55; }
-    a { color: inherit; }
-    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
-    header { position: sticky; top: 0; z-index: 5; background: rgba(23,21,23,.92);
-      backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-    nav { min-height: 68px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
-    .brand { font-size: 1.2rem; font-weight: 900; letter-spacing: .12em; text-decoration:none; }
-    .brand span { color: var(--accent); }
-    .links { display:flex; gap:22px; flex-wrap:wrap; }
-    .links a { color: var(--muted); text-decoration:none; font-size:.86rem; }
-    .links a:hover, .text-link:hover { color: var(--accent); }
-    .hero { padding: 92px 0 76px; display:grid; grid-template-columns: 1.2fr .8fr; gap:54px; align-items:center; }
-    .eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:.2em; font-size:.75rem; font-weight:800; }
-    h1 { font-size:clamp(3.4rem, 9vw, 7rem); line-height:.9; letter-spacing:-.075em; margin:18px 0 24px; }
-    h1 em { color:var(--accent); font-style:normal; }
-    .intro { color:var(--muted); max-width:600px; font-size:1.12rem; }
-    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
-    .btn { display:inline-flex; padding:12px 18px; border:1px solid var(--accent); border-radius:3px;
-      text-decoration:none; font-weight:750; font-size:.9rem; }
-    .btn.primary { background:var(--accent); color:#1a1117; }
-    .hero-art { min-height:390px; border:1px solid var(--line); position:relative; overflow:hidden;
-      background:linear-gradient(145deg,#3b2532,#201b20 58%,#161416); display:flex; align-items:end; padding:24px; }
-    .hero-art:before { content:""; position:absolute; width:260px; height:260px; border-radius:50%;
-      background:radial-gradient(circle,rgba(240,90,166,.65),rgba(240,90,166,0) 70%);
-      top:20px; right:-35px; }
-    .hero-art .note { position:relative; z-index:1; color:#f8eaf1; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; }
-    section { padding:76px 0; border-top:1px solid var(--line); }
-    .section-head { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:30px; }
-    h2 { font-size:clamp(2rem,5vw,3.4rem); line-height:1; letter-spacing:-.055em; margin:8px 0 0; }
-    .section-copy { max-width:490px; color:var(--muted); margin:0; }
-    .feature { background:var(--panel); border:1px solid var(--line); padding:24px; }
-    .video-frame { position:relative; width:100%; aspect-ratio:16/9; background:#090809; }
-    .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
-    .video-meta { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-top:18px; }
-    .video-meta p { margin:4px 0 0; color:var(--muted); }
-    .text-link { color:var(--accent); text-decoration:none; font-weight:750; }
-    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    .tile { padding:24px; min-height:210px; border:1px solid var(--line); background:var(--panel); }
-    .tile .num { color:var(--accent); font-size:.75rem; letter-spacing:.16em; font-weight:800; }
-    .tile h3 { font-size:1.45rem; margin:30px 0 8px; }
-    .tile p { color:var(--muted); margin:0; }
-    .about { display:grid; grid-template-columns:.8fr 1.2fr; gap:44px; align-items:start; }
-    .about-mark { min-height:260px; background:linear-gradient(145deg,#30252c,#1b181b); border:1px solid var(--line);
-      display:flex; align-items:center; justify-content:center; font-size:clamp(3rem,8vw,6rem); font-weight:900; color:var(--accent); }
-    .about p { color:var(--muted); max-width:700px; }
-    .contact { background:var(--accent); color:#1b1117; padding:42px; display:flex; justify-content:space-between; gap:25px; align-items:center; }
-    .contact h2 { max-width:600px; }
-    .contact a { color:#1b1117; font-weight:800; }
-    footer { padding:28px 0; color:var(--muted); font-size:.8rem; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
-    @media (max-width:760px) {
-      .links { gap:12px; } .links a { font-size:.75rem; }
-      .hero, .about { grid-template-columns:1fr; }
-      .hero { padding:65px 0 55px; gap:30px; }
-      .hero-art { min-height:230px; }
-      .section-head { display:block; } .section-copy { margin-top:16px; }
-      .grid { grid-template-columns:1fr; }
-      section { padding:56px 0; }
-      .contact { display:block; padding:28px; }
-      .contact .btn { margin-top:18px; }
+      line-height: 1.55;
     }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(23,21,23,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-decoration: none;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .86rem;
+    }
+
+    .links a:hover, .text-link:hover { color: var(--accent); }
+
+    .hero {
+      padding: 92px 0 76px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: .75rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 9vw, 7rem);
+      line-height: .9;
+      letter-spacing: -.075em;
+      margin: 18px 0 24px;
+    }
+
+    h1 em { color: var(--accent); font-style: normal; }
+
+    .intro {
+      color: var(--muted);
+      max-width: 600px;
+      font-size: 1.12rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      padding: 12px 18px;
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 750;
+      font-size: .9rem;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #1a1117;
+    }
+
+    .hero-art {
+      min-height: 390px;
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg,#3b2532,#201b20 58%,#161416);
+      display: flex;
+      align-items: end;
+      padding: 24px;
+    }
+
+    .hero-art img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+    }
+
+    section {
+      padding: 76px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: clamp(2rem,5vw,3.4rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+      margin: 8px 0 0;
+    }
+
+    .section-copy {
+      max-width: 490px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .feature {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 24px;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #090809;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 18px;
+    }
+
+    .video-meta p {
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    .text-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+
+    .tile {
+      padding: 24px;
+      min-height: 210px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .tile .num {
+      color: var(--accent);
+      font-size: .75rem;
+      letter-spacing: .16em;
+      font-weight: 800;
+    }
+
+    .tile h3 {
+      font-size: 1.45rem;
+      margin: 30px 0 8px;
+    }
+
+    .tile p { color: var(--muted); margin: 0; }
+
+    .about {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 44px;
+      align-items: start;
+    }
+
+    .about-mark {
+      min-height: 260px;
+      background: linear-gradient(145deg,#30252c,#1b181b);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(3rem,8vw,6rem);
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .about p { color: var(--muted); max-width: 700px; }
+
+    .contact {
+      background: var(--accent);
+      color: #1b1117;
+      padding: 42px;
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .contact h2 { max-width: 600px; }
+    .contact a { color: #1b1117; font-weight: 800; }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: .8rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Fotografía de conducción */
+    .streaming-photo {
+      display: block;
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      object-position: center;
+      margin: 0 0 24px;
+      border: 1px solid var(--line);
+    }
+
+    @media (max-width:760px) {
+      .links { gap: 12px; }
+      .links a { font-size: .75rem; }
+
+      .hero, .about { grid-template-columns: 1fr; }
+      .hero { padding: 65px 0 55px; gap: 30px; }
+      .hero-art { min-height: 320px; }
+
+      .section-head { display: block; }
+      .section-copy { margin-top: 16px; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 56px 0; }
+
+      .contact { display: block; padding: 28px; }
+      .contact .btn { margin-top: 18px; }
+    }
+
     @media (max-width:430px) {
-      nav { align-items:flex-start; flex-direction:column; padding:14px 0; }
-      .links { padding-bottom:4px; }
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .links { padding-bottom: 4px; }
     }
   </style>
 </head>
+
 <body>
   <header>
     <nav class="wrap">
       <a class="brand" href="#inicio">RHANELA<span>.</span></a>
-<div class="links">
-  <a href="#conduccion">Conducción</a>
-  <a href="#digital">Comunicación digital</a>
-  <a href="#musica">Música</a>
-  <a href="#proyectos">Proyectos</a>
-  <a href="#herramientas">Herramientas</a>
-  <a href="#sobre-mi">Sobre mí</a>
-  <a href="#contacto">Contacto</a>
-</div>
+      <div class="links">
+        <a href="#conduccion">Conducción</a>
+        <a href="#digital">Comunicación digital</a>
+        <a href="#musica">Música</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#herramientas">Herramientas</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </div>
     </nav>
   </header>
 
@@ -103,41 +344,89 @@
       <div>
         <div class="eyebrow">Conducción · Comunicación · Producción de contenidos</div>
         <h1>Ideas que<br>se vuelven <em>proyectos.</em></h1>
-        <p class="intro">Soy Rhanela. Creo, desarrollo y llevo adelante proyectos que cruzan la comunicación, el entretenimiento y la música. Me interesa tanto construir una propuesta desde cero como conducirla y darle vida frente a una audiencia.</p>
+        <p class="intro">
+          Soy Rhanela. Creo, desarrollo y llevo adelante proyectos que cruzan
+          la comunicación, el entretenimiento y la música. Me interesa tanto
+          construir una propuesta desde cero como conducirla y darle vida
+          frente a una audiencia.
+        </p>
         <div class="actions">
           <a class="btn primary" href="#conduccion">Ver mi trabajo</a>
           <a class="btn" href="#contacto">Contactarme</a>
         </div>
       </div>
-      <div class="hero-art" role="img" aria-label="Espacio reservado para una fotografía de Rhanela">
-        <div class="note">[ Próximamente: fotografía de portada ]</div>
+
+      <div class="hero-art">
+        <img
+          src="F7C56553-26F5-415C-B180-558C0565B81F.jpg"
+          alt="Retrato de Rhanela con campera rosa"
+        >
       </div>
     </div>
 
     <section id="conduccion">
       <div class="wrap">
         <div class="section-head">
-          <div><div class="eyebrow">01 / Comunicación</div><h2>Conducción</h2></div>
-          <p class="section-copy">Pienso los contenidos, desarrollo las propuestas y conduzco los encuentros. Me interesa generar conversaciones, conectar ideas y construir experiencias para una audiencia.</p>
+          <div>
+            <div class="eyebrow">01 / Comunicación</div>
+            <h2>Conducción</h2>
+          </div>
+          <p class="section-copy">
+            Pienso los contenidos, desarrollo las propuestas y conduzco los
+            encuentros. Me interesa generar conversaciones, conectar ideas
+            y construir experiencias para una audiencia.
+          </p>
         </div>
+
         <div class="feature" style="margin-bottom:14px;">
           <p class="intro" style="margin:0 0 22px; max-width:900px;">
-            Conducir implica mucho más que estar frente a una cámara o un micrófono: es escuchar,
-            preguntar y repreguntar, guiar conversaciones, administrar tiempos, articular intervenciones
-            y sostener el hilo de un programa. Trabajo a partir de una estructura o un guion, con flexibilidad
-            para adaptarme a lo que sucede en vivo, improvisar y resolver situaciones sin perder de vista
-            el objetivo del encuentro.
+            Conducir implica mucho más que estar frente a una cámara o un
+            micrófono: es escuchar, preguntar y repreguntar, guiar conversaciones,
+            administrar tiempos, articular intervenciones y sostener el hilo de
+            un programa. Trabajo a partir de una estructura o un guion, con
+            flexibilidad para adaptarme a lo que sucede en vivo, improvisar y
+            resolver situaciones sin perder de vista el objetivo del encuentro.
           </p>
+
           <div class="grid">
-            <article class="tile"><div class="num">01 — DESARROLLO EDITORIAL</div><h3>Ideas y contenidos</h3><p>Definición de temas, investigación, búsqueda de enfoques y desarrollo de secciones.</p></article>
-            <article class="tile"><div class="num">02 — PRODUCCIÓN</div><h3>Estructura y planificación</h3><p>Preparación de preguntas, armado de guiones, organización de bloques y planificación de tiempos.</p></article>
-            <article class="tile"><div class="num">03 — CONDUCCIÓN</div><h3>En vivo y en escena</h3><p>Entrevistas, conducción de conversaciones, improvisación, adaptación y resolución en tiempo real.</p></article>
+            <article class="tile">
+              <div class="num">01 — DESARROLLO EDITORIAL</div>
+              <h3>Ideas y contenidos</h3>
+              <p>Definición de temas, investigación, búsqueda de enfoques y desarrollo de secciones.</p>
+            </article>
+            <article class="tile">
+              <div class="num">02 — PRODUCCIÓN</div>
+              <h3>Estructura y planificación</h3>
+              <p>Preparación de preguntas, armado de guiones, organización de bloques y planificación de tiempos.</p>
+            </article>
+            <article class="tile">
+              <div class="num">03 — CONDUCCIÓN</div>
+              <h3>En vivo y en escena</h3>
+              <p>Entrevistas, conducción de conversaciones, improvisación, adaptación y resolución en tiempo real.</p>
+            </article>
           </div>
         </div>
+
         <div class="feature">
-          <div class="eyebrow" style="margin-bottom:12px;">Proyecto propio · Creación, producción de contenidos y conducción</div>
+          <div class="eyebrow" style="margin-bottom:12px;">
+            Proyecto propio · Creación, producción de contenidos y conducción
+          </div>
           <h3 style="font-size:1.8rem; margin:0 0 8px;">20ypico</h3>
-          <p class="section-copy" style="max-width:850px; margin:0 0 22px;">Un programa de streaming que desarrollo desde la idea: pienso el concepto y los temas, investigo, diseño secciones y dinámicas, preparo preguntas y guiones, organizo la estructura y los tiempos, y conduzco cada emisión. Es un proyecto en el que reúno el trabajo creativo, editorial y la conducción frente a la audiencia.</p>
+          <p class="section-copy" style="max-width:850px; margin:0 0 22px;">
+            Un programa de streaming que desarrollo desde la idea: pienso el
+            concepto y los temas, investigo, diseño secciones y dinámicas,
+            preparo preguntas y guiones, organizo la estructura y los tiempos,
+            y conduzco cada emisión. Es un proyecto en el que reúno el trabajo
+            creativo, editorial y la conducción frente a la audiencia.
+          </p>
+
+          <img
+            class="streaming-photo"
+            src="IMG_9520.jpg"
+            alt="Rhanela en un estudio de streaming"
+            loading="lazy"
+          >
+
           <div class="video-frame">
             <iframe
               src="https://www.youtube-nocookie.com/embed/lZTEBNjWyDU?list=PLWeYHgcVRk60"
@@ -145,161 +434,188 @@
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
+              allowfullscreen>
+            </iframe>
           </div>
+
           <div class="video-meta">
             <div>
               <div class="eyebrow">20ypico · Primer programa</div>
               <strong>Primer programa completo</strong>
-              <p>Una muestra del proyecto creado, producido en sus contenidos y conducido por mí. Reproducilo desde esta página. Inicia en 1:48. </p>
+              <p>
+                Una muestra del proyecto creado, producido en sus contenidos
+                y conducido por mí. Reproducilo desde esta página. Inicia en 1:48.
+              </p>
             </div>
-            <a class="text-link" href="https://www.youtube.com/watch?v=lZTEBNjWyDU&list=PLWeYHgcVRk60" target="_blank" rel="noopener">Ver en YouTube ↗</a>
+            <a class="text-link"
+              href="https://www.youtube.com/watch?v=lZTEBNjWyDU&list=PLWeYHgcVRk60"
+              target="_blank" rel="noopener">Ver en YouTube ↗</a>
           </div>
         </div>
       </div>
     </section>
 
-<section id="digital">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">02 / Estrategia y creación</div>
-        <h2>Comunicación digital</h2>
+    <section id="digital">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">02 / Estrategia y creación</div>
+            <h2>Comunicación digital</h2>
+          </div>
+          <p class="section-copy">
+            Desarrollo estrategias de comunicación para proyectos propios,
+            combinando creatividad, planificación, producción audiovisual
+            y análisis de resultados.
+          </p>
+        </div>
+
+        <div class="feature">
+          <p class="intro" style="margin:0 0 26px; max-width:900px;">
+            Gestiono y desarrollo mis propias redes sociales desde una mirada
+            estratégica. Pienso qué comunicar, a quién, en qué momento y de qué
+            manera. Investigo tendencias, observo el contexto, experimento con
+            formatos y analizo continuamente el comportamiento de las publicaciones
+            para ajustar y mejorar los contenidos.
+          </p>
+
+          <div class="grid">
+            <article class="tile">
+              <div class="num">01 — ESTRATEGIA</div>
+              <h3>Planificación de contenidos</h3>
+              <p>
+                Definición de objetivos, planificación de publicaciones,
+                investigación de tendencias, análisis de contexto y selección
+                de formatos, días y horarios.
+              </p>
+            </article>
+
+            <article class="tile">
+              <div class="num">02 — PRODUCCIÓN</div>
+              <h3>Creación audiovisual</h3>
+              <p>
+                Desarrollo de ideas y conceptos, escritura de guiones para reels,
+                grabación, edición de videos y adaptación de contenidos
+                a distintos formatos y plataformas.
+              </p>
+            </article>
+
+            <article class="tile">
+              <div class="num">03 — ANÁLISIS</div>
+              <h3>Estadísticas y rendimiento</h3>
+              <p>
+                Seguimiento de métricas, alcance, visualizaciones e interacción.
+                Análisis de resultados y comportamiento de las audiencias
+                para identificar oportunidades y optimizar estrategias.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="feature" style="margin-top:14px;">
+          <div class="eyebrow">Experiencia práctica</div>
+          <h3 style="font-size:1.7rem; margin:8px 0;">
+            Creación de contenido y desarrollo de audiencia
+          </h3>
+          <p class="section-copy" style="max-width:850px;">
+            Mi experiencia gestionando proyectos digitales propios me permitió
+            desarrollar una mirada integral sobre la comunicación en redes:
+            desde la idea y la producción hasta la publicación, el análisis
+            de resultados y la toma de decisiones.
+          </p>
+        </div>
+
+        <div class="feature" style="margin-top:14px;">
+          <div class="eyebrow">Selección de trabajos · Instagram</div>
+          <h3 style="font-size:1.8rem; margin:8px 0;">
+            Contenido que genera identificación
+          </h3>
+          <p class="section-copy" style="max-width:850px; margin-bottom:26px;">
+            Una de mis fortalezas como creadora de contenido es encontrar situaciones,
+            códigos y experiencias cotidianas en las que personas diferentes puedan
+            reconocerse. Trabajo con humor, observación, referencias culturales,
+            identificación emocional y recursos audiovisuales para generar conexión
+            con la audiencia.
+          </p>
+
+          <div class="grid">
+            <article class="tile" style="padding:14px; min-width:0;">
+              <div class="num">01 — HUMOR COTIDIANO</div>
+              <h3 style="margin:12px 0 5px;">Romantizar el único día de sol</h3>
+              <p style="margin-bottom:14px;">400 Me gusta · Música propia</p>
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DcO0_wbIHkV/"
+                data-instgrm-version="14"
+                style="background:#fff; border:0; margin:0 auto; width:100%; max-width:540px;">
+                <a href="https://www.instagram.com/reel/DcO0_wbIHkV/" target="_blank" rel="noopener">
+                  Ver reel en Instagram
+                </a>
+              </blockquote>
+            </article>
+
+            <article class="tile" style="padding:14px; min-width:0;">
+              <div class="num">02 — HUMOR AUTORREFERENCIAL</div>
+              <h3 style="margin:12px 0 5px;">POV: medís 1,50 y monedas</h3>
+              <p style="margin-bottom:14px;">1,5 M de reproducciones · 112 mil Me gusta</p>
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DYfR5bXIVK1/"
+                data-instgrm-version="14"
+                style="background:#fff; border:0; margin:0 auto; width:100%; max-width:540px;">
+                <a href="https://www.instagram.com/reel/DYfR5bXIVK1/" target="_blank" rel="noopener">
+                  Ver reel en Instagram
+                </a>
+              </blockquote>
+            </article>
+
+            <article class="tile" style="padding:14px; min-width:0;">
+              <div class="num">03 — IDENTIFICACIÓN EMOCIONAL</div>
+              <h3 style="margin:12px 0 5px;">Hasta que un día las girls lo entendimos</h3>
+              <p style="margin-bottom:14px;">1 M de reproducciones · 126 mil Me gusta</p>
+              <blockquote class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DGuKgMINgaY/"
+                data-instgrm-version="14"
+                style="background:#fff; border:0; margin:0 auto; width:100%; max-width:540px;">
+                <a href="https://www.instagram.com/reel/DGuKgMINgaY/" target="_blank" rel="noopener">
+                  Ver reel en Instagram
+                </a>
+              </blockquote>
+            </article>
+          </div>
+        </div>
       </div>
-      <p class="section-copy">
-        Desarrollo estrategias de comunicación para proyectos propios,
-        combinando creatividad, planificación, producción audiovisual
-        y análisis de resultados.
-      </p>
-    </div>
+    </section>
 
-    <div class="feature">
-      <p class="intro" style="margin:0 0 26px; max-width:900px;">
-        Gestiono y desarrollo mis propias redes sociales desde una mirada
-        estratégica. Pienso qué comunicar, a quién, en qué momento y de qué
-        manera. Investigo tendencias, observo el contexto, experimento con
-        formatos y analizo continuamente el comportamiento de las publicaciones
-        para ajustar y mejorar los contenidos.
-      </p>
-
-      <div class="grid">
-        <article class="tile">
-          <div class="num">01 — ESTRATEGIA</div>
-          <h3>Planificación de contenidos</h3>
-          <p>
-            Definición de objetivos, planificación de publicaciones,
-            investigación de tendencias, análisis de contexto y selección
-            de formatos, días y horarios.
-          </p>
-        </article>
-
-        <article class="tile">
-          <div class="num">02 — PRODUCCIÓN</div>
-          <h3>Creación audiovisual</h3>
-          <p>
-            Desarrollo de ideas y conceptos, escritura de guiones para reels,
-            grabación, edición de videos y adaptación de contenidos
-            a distintos formatos y plataformas.
-          </p>
-        </article>
-
-        <article class="tile">
-          <div class="num">03 — ANÁLISIS</div>
-          <h3>Estadísticas y rendimiento</h3>
-          <p>
-            Seguimiento de métricas, alcance, visualizaciones e interacción.
-            Análisis de resultados y comportamiento de las audiencias
-            para identificar oportunidades y optimizar estrategias.
-          </p>
-        </article>
-      </div>
-    </div>
-
-    <div class="feature" style="margin-top:14px;">
-      <div class="eyebrow">Experiencia práctica</div>
-      <h3 style="font-size:1.7rem; margin:8px 0;">
-        Creación de contenido y desarrollo de audiencia
-      </h3>
-      <p class="section-copy" style="max-width:850px;">
-        Mi experiencia gestionando proyectos digitales propios me permitió
-        desarrollar una mirada integral sobre la comunicación en redes:
-        desde la idea y la producción hasta la publicación, el análisis
-        de resultados y la toma de decisiones.
-      </p>
-    </div>
-  </div>
-</section>
-
-<div class="feature" style="margin-top:14px;">
-  <div class="eyebrow">Selección de trabajos · Instagram</div>
-  <h3 style="font-size:1.8rem; margin:8px 0;">
-    Contenido que genera identificación
-  </h3>
-  <p class="section-copy" style="max-width:850px; margin-bottom:26px;">
-    Una de mis fortalezas como creadora de contenido es encontrar situaciones,
-    códigos y experiencias cotidianas en las que personas diferentes puedan
-    reconocerse. Trabajo con humor, observación, referencias culturales,
-    identificación emocional y recursos audiovisuales para generar conexión
-    con la audiencia.
-  </p>
-
-  <div class="grid">
-    <article class="tile" style="padding:14px; min-width:0;">
-      <div class="num">01 — HUMOR COTIDIANO</div>
-      <h3 style="margin:12px 0 5px;">Romantizar el único día de sol</h3>
-      <p style="margin-bottom:14px;">400 Me gusta · Música propia</p>
-      <blockquote class="instagram-media"
-        data-instgrm-permalink="https://www.instagram.com/reel/DcO0_wbIHkV/"
-        data-instgrm-version="14"
-        style="background:#fff; border:0; margin:0 auto; width:100%; max-width:540px;">
-        <a href="https://www.instagram.com/reel/DcO0_wbIHkV/" target="_blank" rel="noopener">
-          Ver reel en Instagram
-        </a>
-      </blockquote>
-    </article>
-
-    <article class="tile" style="padding:14px; min-width:0;">
-      <div class="num">02 — HUMOR AUTORREFERENCIAL</div>
-      <h3 style="margin:12px 0 5px;">POV: medís 1,50 y monedas</h3>
-      <p style="margin-bottom:14px;">1,5 M de reproducciones · 112 mil Me gusta</p>
-      <blockquote class="instagram-media"
-        data-instgrm-permalink="https://www.instagram.com/reel/DYfR5bXIVK1/"
-        data-instgrm-version="14"
-        style="background:#fff; border:0; margin:0 auto; width:100%; max-width:540px;">
-        <a href="https://www.instagram.com/reel/DYfR5bXIVK1/" target="_blank" rel="noopener">
-          Ver reel en Instagram
-        </a>
-      </blockquote>
-    </article>
-
-    <article class="tile" style="padding:14px; min-width:0;">
-      <div class="num">03 — IDENTIFICACIÓN EMOCIONAL</div>
-      <h3 style="margin:12px 0 5px;">Hasta que un día las girls lo entendimos</h3>
-      <p style="margin-bottom:14px;">1 M de reproducciones · 126 mil Me gusta</p>
-      <blockquote class="instagram-media"
-        data-instgrm-permalink="https://www.instagram.com/reel/DGuKgMINgaY/"
-        data-instgrm-version="14"
-        style="background:#fff; border:0; margin:0 auto; width:100%; max-width:540px;">
-        <a href="https://www.instagram.com/reel/DGuKgMINgaY/" target="_blank" rel="noopener">
-          Ver reel en Instagram
-        </a>
-      </blockquote>
-    </article>
-  </div>
-</div>
-
-<script async src="https://www.instagram.com/embed.js"></script>
+    <script async src="https://www.instagram.com/embed.js"></script>
 
     <section id="musica">
       <div class="wrap">
         <div class="section-head">
-          <div><div class="eyebrow">02 / Proyecto artístico</div><h2>Música</h2></div>
-          <p class="section-copy">Mi proyecto musical: composición, canciones propias, interpretación y presentaciones en vivo. La música es uno de los pilares de mi recorrido creativo.</p>
+          <div>
+            <div class="eyebrow">02 / Proyecto artístico</div>
+            <h2>Música</h2>
+          </div>
+          <p class="section-copy">
+            Mi proyecto musical: composición, canciones propias, interpretación
+            y presentaciones en vivo. La música es uno de los pilares de mi
+            recorrido creativo.
+          </p>
         </div>
+
         <div class="grid">
-          <article class="tile"><div class="num">01 — DISCOS Y SINGLES</div><h3>Mi música</h3><p>Próximamente: lanzamientos, álbumes y enlaces para escuchar.</p></article>
-          <article class="tile"><div class="num">02 — AUDIOVISUAL</div><h3>Videoclips</h3><p>Próximamente: videos, sesiones y piezas visuales.</p></article>
-          <article class="tile"><div class="num">03 — ESCENARIO</div><h3>En vivo</h3><p>Próximamente: shows, presentaciones y registros en directo.</p></article>
+          <article class="tile">
+            <div class="num">01 — DISCOS Y SINGLES</div>
+            <h3>Mi música</h3>
+            <p>Próximamente: lanzamientos, álbumes y enlaces para escuchar.</p>
+          </article>
+          <article class="tile">
+            <div class="num">02 — AUDIOVISUAL</div>
+            <h3>Videoclips</h3>
+            <p>Próximamente: videos, sesiones y piezas visuales.</p>
+          </article>
+          <article class="tile">
+            <div class="num">03 — ESCENARIO</div>
+            <h3>En vivo</h3>
+            <p>Próximamente: shows, presentaciones y registros en directo.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -307,60 +623,79 @@
     <section id="proyectos">
       <div class="wrap">
         <div class="section-head">
-          <div><div class="eyebrow">03 / Otras facetas</div><h2>Proyectos</h2></div>
-          <p class="section-copy">También me interesa crear espacios de aprendizaje, intercambio y exploración artística.</p>
+          <div>
+            <div class="eyebrow">03 / Otras facetas</div>
+            <h2>Proyectos</h2>
+          </div>
+          <p class="section-copy">
+            También me interesa crear espacios de aprendizaje, intercambio
+            y exploración artística.
+          </p>
         </div>
+
         <div class="grid">
-          <article class="tile"><div class="num">DOCENCIA</div><h3>Canto y música</h3><p>Experiencia dando clases de canto, coordinando grupos y acompañando procesos de aprendizaje musical.</p></article>
-          <article class="tile"><div class="num">TALLERES</div><h3>Arte y exploración</h3><p>Espacio para sumar talleres, propuestas culturales y experiencias interdisciplinarias.</p></article>
-          <article class="tile"><div class="num">COLABORACIONES</div><h3>Ideas en movimiento</h3><p>Proyectos creativos, participaciones y encuentros con otras personas y disciplinas.</p></article>
+          <article class="tile">
+            <div class="num">DOCENCIA</div>
+            <h3>Canto y música</h3>
+            <p>Experiencia dando clases de canto, coordinando grupos y acompañando procesos de aprendizaje musical.</p>
+          </article>
+          <article class="tile">
+            <div class="num">TALLERES</div>
+            <h3>Arte y exploración</h3>
+            <p>Espacio para sumar talleres, propuestas culturales y experiencias interdisciplinarias.</p>
+          </article>
+          <article class="tile">
+            <div class="num">COLABORACIONES</div>
+            <h3>Ideas en movimiento</h3>
+            <p>Proyectos creativos, participaciones y encuentros con otras personas y disciplinas.</p>
+          </article>
         </div>
       </div>
     </section>
 
-<section id="herramientas">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">04 / Competencias complementarias</div>
-        <h2>Herramientas digitales</h2>
+    <section id="herramientas">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">04 / Competencias complementarias</div>
+            <h2>Herramientas digitales</h2>
+          </div>
+          <p class="section-copy">
+            Interés y formación en tecnología, desarrollo web y herramientas
+            digitales aplicadas a proyectos creativos y de comunicación.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="tile">
+            <div class="num">DESARROLLO WEB</div>
+            <h3>HTML y CSS</h3>
+            <p>
+              Desarrollo de mi propio portfolio web, trabajando sobre estructura,
+              diseño, adaptación a dispositivos y publicación online.
+            </p>
+          </article>
+
+          <article class="tile">
+            <div class="num">HERRAMIENTAS</div>
+            <h3>Entorno digital</h3>
+            <p>
+              Uso de GitHub y GitHub Pages para gestionar y publicar proyectos,
+              junto con herramientas de edición audiovisual y creación de contenido.
+            </p>
+          </article>
+
+          <article class="tile">
+            <div class="num">FORMACIÓN</div>
+            <h3>Programación</h3>
+            <p>
+              Formación en programación y pensamiento computacional,
+              con práctica en resolución de problemas y desarrollo de proyectos.
+            </p>
+          </article>
+        </div>
       </div>
-      <p class="section-copy">
-        Interés y formación en tecnología, desarrollo web y herramientas
-        digitales aplicadas a proyectos creativos y de comunicación.
-      </p>
-    </div>
-
-    <div class="grid">
-      <article class="tile">
-        <div class="num">DESARROLLO WEB</div>
-        <h3>HTML y CSS</h3>
-        <p>
-          Desarrollo de mi propio portfolio web, trabajando sobre estructura,
-          diseño, adaptación a dispositivos y publicación online.
-        </p>
-      </article>
-
-      <article class="tile">
-        <div class="num">HERRAMIENTAS</div>
-        <h3>Entorno digital</h3>
-        <p>
-          Uso de GitHub y GitHub Pages para gestionar y publicar proyectos,
-          junto con herramientas de edición audiovisual y creación de contenido.
-        </p>
-      </article>
-
-      <article class="tile">
-        <div class="num">FORMACIÓN</div>
-        <h3>Programación</h3>
-        <p>
-          Formación en programación y pensamiento computacional,
-          con práctica en resolución de problemas y desarrollo de proyectos.
-        </p>
-      </article>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section id="sobre-mi">
       <div class="wrap about">
@@ -368,8 +703,18 @@
         <div>
           <div class="eyebrow">04 / Sobre mí</div>
           <h2>Detrás de cada proyecto, una persona.</h2>
-          <p>Soy artista, cantante, compositora, conductora y creadora de contenidos. Mi recorrido combina la experiencia musical y docente con el desarrollo de proyectos de comunicación y entretenimiento.</p>
-          <p>Me interesa crear desde distintos lugares: componer una canción, diseñar un programa, preparar una entrevista, conducir una conversación o generar un espacio de aprendizaje. Disfruto tanto del proceso creativo y la planificación como del encuentro con otras personas y de lo que sucede en el momento.</p>
+          <p>
+            Soy artista, cantante, compositora, conductora y creadora de contenidos.
+            Mi recorrido combina la experiencia musical y docente con el desarrollo
+            de proyectos de comunicación y entretenimiento.
+          </p>
+          <p>
+            Me interesa crear desde distintos lugares: componer una canción,
+            diseñar un programa, preparar una entrevista, conducir una conversación
+            o generar un espacio de aprendizaje. Disfruto tanto del proceso creativo
+            y la planificación como del encuentro con otras personas y de lo que
+            sucede en el momento.
+          </p>
         </div>
       </div>
     </section>
@@ -377,7 +722,10 @@
     <section id="contacto">
       <div class="wrap">
         <div class="contact">
-          <div><div class="eyebrow" style="color:#321322">¿TENÉS UNA PROPUESTA?</div><h2>Hablemos de lo que podemos crear.</h2></div>
+          <div>
+            <div class="eyebrow" style="color:#321322">¿TENÉS UNA PROPUESTA?</div>
+            <h2>Hablemos de lo que podemos crear.</h2>
+          </div>
           <span class="btn">Contacto profesional · próximamente</span>
         </div>
       </div>
@@ -388,6 +736,10 @@
     <span>© <span id="year"></span> RHANELA</span>
     <span>Portfolio en construcción · Música, comunicación y proyectos</span>
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
